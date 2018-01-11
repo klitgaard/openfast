@@ -30,7 +30,10 @@ set(MODULE_SOURCES
 add_library(turbsimlib ${MODULE_SOURCES})
 target_link_libraries(turbsimlib nwtclibs)
 
-install(TARGETS turbsimlib
+add_executable(turbsim ${MODULE_SOURCES})
+target_link_libraries(turbsim turbsimlib nwtclibs)
+
+install(TARGETS turbsim turbsimlib
   EXPORT "${CMAKE_PROJECT_NAME}Libraries"
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
